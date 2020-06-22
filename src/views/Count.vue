@@ -1,9 +1,7 @@
 <template>
   <div class="count">
     <h1>カウンターページ</h1>
-
     <p>{{ count }}</p>
-
     <p>
       <button @click="increment">+</button>
       <button @click="decrement">-</button>
@@ -11,20 +9,23 @@
   </div>
 </template>
 
-
 <script>
+
 export default {
   data() {
-    return {
-      count: "0"
-    };
+    return {};
   },
   methods: {
     increment() {
-      this.count++;
+      this.$store.commit("increment");
     },
     decrement() {
-      this.count--;
+      this.$store.commit("decrement");
+    }
+  },
+  computed: {
+    count() {
+      return this.$store.getters.count;
     }
   }
 };
